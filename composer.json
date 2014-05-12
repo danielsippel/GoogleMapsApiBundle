@@ -1,0 +1,9 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "4.*",
+        "phpunit/phpunit": "4.1.*"
+    },
+    "autoload": {
+        "psr-4": { "GoogleMapsApiBundle\\Geocoding\\": "src/Geocoding" }
+    }
+}
