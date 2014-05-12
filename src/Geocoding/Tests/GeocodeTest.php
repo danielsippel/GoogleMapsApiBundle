@@ -75,13 +75,13 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
 
         $response = $this->getMockBuilder('\GuzzleHttp\Message\Response')->disableOriginalConstructor()->getMock();
         $response->expects($this->once())->method('json')->will($this->returnValue(
-                array(
-                    'status' => 'OK',
-                    'result' => array(0 =>
-                        array('formatted_address' => 'Technische Universität Berlin, 10623 Berlin, Deutschland')
-                    )
+            array(
+                'status' => 'OK',
+                'result' => array(0 =>
+                    array('formatted_address' => 'Technische Universität Berlin, 10623 Berlin, Deutschland')
                 )
-            ));
+            )
+        ));
 
         $client = $this->getMockBuilder('\GuzzleHttp\Client')->disableOriginalConstructor()->getMock();
         $client->expects($this->once())->method('get')->with($requestUrlExpected)->will($this->returnValue($response));
