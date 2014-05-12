@@ -26,9 +26,10 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetApiResponseThrowsExceptionOnBadStatus() {
 
+        $region = 'de';
         $address = 'Berlin TU';
         $requestUrlExpected = 'https://maps.googleapis.com/maps/api/geocode/json'.
-            '?sensor=false&address=' . urlencode($address) . '&region=de';
+            '?sensor=false&address=' . urlencode($address) . '&region=' . $region;
 
         $response = $this->getMockBuilder('\GuzzleHttp\Message\Response')->disableOriginalConstructor()->getMock();
         $response->expects($this->once())->method('json')->will($this->returnValue(
@@ -40,6 +41,7 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
         $client = $this->getMockBuilder('\GuzzleHttp\Client')->disableOriginalConstructor()->getMock();
         $client->expects($this->once())->method('get')->with($requestUrlExpected)->will($this->returnValue($response));
         $geocode = new Geocode($client);
+        $geocode->setRegion($region);
 
         $this->setExpectedException('GoogleMapsApiBundle\Geocoding\Exception\GeocodeException');
         $geocode->getApiResponse($address);
@@ -47,6 +49,7 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetApiResponseThrowsExceptionOnGuzzleException() {
 
+        $region = 'de';
         $address = 'Berlin TU';
         $requestUrlExpected = 'https://maps.googleapis.com/maps/api/geocode/json'.
             '?sensor=false&address=' . urlencode($address) . '&region=de';
@@ -57,6 +60,7 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
         $client = $this->getMockBuilder('\GuzzleHttp\Client')->disableOriginalConstructor()->getMock();
         $client->expects($this->once())->method('get')->with($requestUrlExpected)->will($this->returnValue($response));
         $geocode = new Geocode($client);
+        $geocode->setRegion($region);
 
         $this->setExpectedException('GoogleMapsApiBundle\Geocoding\Exception\GeocodeException');
         $geocode->getApiResponse($address);
@@ -64,6 +68,7 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetApiResponse() {
 
+        $region = 'de';
         $address = 'Berlin TU';
         $requestUrlExpected = 'https://maps.googleapis.com/maps/api/geocode/json'.
             '?sensor=false&address=' . urlencode($address) . '&region=de';
@@ -81,6 +86,7 @@ class GeocodeTest extends \PHPUnit_Framework_TestCase {
         $client = $this->getMockBuilder('\GuzzleHttp\Client')->disableOriginalConstructor()->getMock();
         $client->expects($this->once())->method('get')->with($requestUrlExpected)->will($this->returnValue($response));
         $geocode = new Geocode($client);
+        $geocode->setRegion($region);
 
         $response = $geocode->getApiResponse($address);
         $this->assertEquals(
