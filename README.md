@@ -12,6 +12,6 @@ php geocodingExample.php
 ```
 
 ```shell
-cd GoogleMapsApiBundle/src/Geocode/Tests
+cd GoogleMapsApiBundle/src/Geocoding/Tests
 phpunit GeocodeTest.php
 ```
