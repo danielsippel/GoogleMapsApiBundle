@@ -2,7 +2,8 @@ coding-example
 ==============
 
 just a short PHP5 coding example - google maps geocoding api request
-uses: guzzle http client, pphunit
+needs: composer
+uses: guzzle http client, phpunit
 
 ```shell
 cd GoogleMapsApiBundle
