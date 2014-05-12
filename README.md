@@ -7,7 +7,7 @@ uses: guzzle http client, pphunit
 ```shell
 cd GoogleMapsApiBundle
 composer install
-cd src/Geocode
+cd src/Geocoding
 php geocodingExample.php
 ```
 
